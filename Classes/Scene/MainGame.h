@@ -17,6 +17,9 @@ public:
 	virtual bool init();
 
 	void loadTowerPositions();
+
+private:
+	Vector<Ref*>  _towers;
 };
 
 #endif
