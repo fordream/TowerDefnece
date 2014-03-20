@@ -23,7 +23,6 @@ public:
 
 class FastRedCreep : public Creep
 {
-
 };
 
 class StrongGreenCreep : public Creep

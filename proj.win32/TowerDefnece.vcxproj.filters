@@ -19,6 +19,9 @@
     <Filter Include="Classes\Creep">
       <UniqueIdentifier>{928cb8d1-6d2f-4ad5-b681-4c21f6c40330}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Scene">
+      <UniqueIdentifier>{09603eb4-868b-421a-b33c-20e6660a2b76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="..\Classes\Creep\Creep.cpp">
       <Filter>Classes\Creep</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\MainGame.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -58,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Creep\Creep.h">
       <Filter>Classes\Creep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\MainGame.h">
+      <Filter>Classes\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
