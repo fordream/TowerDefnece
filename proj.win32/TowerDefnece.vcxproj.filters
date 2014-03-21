@@ -22,6 +22,12 @@
     <Filter Include="Classes\Scene">
       <UniqueIdentifier>{09603eb4-868b-421a-b33c-20e6660a2b76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Tower">
+      <UniqueIdentifier>{ffd805d9-eeab-4032-93f1-a5b24cf207fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Enemy">
+      <UniqueIdentifier>{31f37712-5855-4fa1-b139-768b10a91475}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +51,12 @@
     <ClCompile Include="..\Classes\Scene\MainGame.cpp">
       <Filter>Classes\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Tower\Tower.cpp">
+      <Filter>Classes\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Enemy\Enemy.cpp">
+      <Filter>Classes\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\MainGame.h">
       <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\Tower.h">
+      <Filter>Classes\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Enemy\Enemy.h">
+      <Filter>Classes\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

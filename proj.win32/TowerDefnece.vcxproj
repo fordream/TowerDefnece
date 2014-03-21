@@ -138,8 +138,10 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Creep\Creep.cpp" />
     <ClCompile Include="..\Classes\DataModel\DataModel.cpp" />
+    <ClCompile Include="..\Classes\Enemy\Enemy.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Scene\MainGame.cpp" />
+    <ClCompile Include="..\Classes\Tower\Tower.cpp" />
     <ClCompile Include="..\Classes\WayPoint\WayPoint.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -147,8 +149,10 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Creep\Creep.h" />
     <ClInclude Include="..\Classes\DataModel\DataModel.h" />
+    <ClInclude Include="..\Classes\Enemy\Enemy.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Scene\MainGame.h" />
+    <ClInclude Include="..\Classes\Tower\Tower.h" />
     <ClInclude Include="..\Classes\WayPoint\WayPoint.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

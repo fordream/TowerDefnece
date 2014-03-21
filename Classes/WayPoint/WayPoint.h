@@ -12,6 +12,17 @@ public:
 
 	CREATE_FUNC(WayPoint);
 
-	virtual bool init();
+	static WayPoint* create(Layer* gameLayer, Point location);
+
+
+	CC_SYNTHESIZE(WayPoint*, _nextWayPoint, NextWayPoint);
+	CC_SYNTHESIZE(Layer*, _gameLayer, GameLayer);
+	CC_SYNTHESIZE(Point, _wayPosition, WayPosition);
+
+	virtual void draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated) override;
+
+
+private:
+	bool initwithTheGame(Layer* gameLayer, Point location);
 };
 #endif

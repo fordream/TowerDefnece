@@ -5,6 +5,10 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+#include "../Enemy/Enemy.h"
+
+class Tower;
+
 class MainGame : public Layer{
 public:
 	MainGame();
@@ -17,9 +21,35 @@ public:
 	virtual bool init();
 
 	void loadTowerPositions();
+	bool loadWave();
+
+	virtual void onEnter() override;
+	virtual void onExit() override;
+
+	bool canBuyTower();
+
+	void addWayPoint();
+
+	virtual void onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event) override;
+
+	bool circle(Point circlePointOne, float radiusOne, Point circlePointTwo, float radiusTwo);
+
+	void ccFillPoly(Point poli, int points, bool closePolygon);
+	
+	void enemyGotKilled();
+	void getHpDamage();
+
+	CC_SYNTHESIZE(unsigned int, _wave, Wave);
+
+	Vector<Ref*>& getWayPoints(){ return _wayPoints; }
+	Vector<Enemy*>& getEnemies(){ return _vectEnemies; }
 
 private:
 	Vector<Ref*>  _towers;
+	Vector<Ref*> _towerBases;
+	Vector<Ref*> _wayPoints;
+	Vector<Enemy*> _vectEnemies;
+	LabelBMFont* ui_wave_lbl;
 };
 
 #endif
