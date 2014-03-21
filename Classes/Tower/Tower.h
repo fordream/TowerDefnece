@@ -5,6 +5,8 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+class Enemy;
+
 class Tower : public cocos2d::Node{
 public:
 	Tower();
@@ -28,5 +30,8 @@ public:
 
 private:
 	 bool initwithTheGame(Layer* ptrGame, Point location);
+	 bool _bIsAttck;
+	 Enemy* _chosenEnemy;
+
 };
 #endif
