@@ -6,6 +6,7 @@
 USING_NS_CC;
 
 class WayPoint;
+class Tower;
 
 #define HEALTH_BAR_WIDTH 20
 #define HEALTH_BAR_ORIGIN 10
@@ -33,8 +34,18 @@ public:
 
 	virtual void draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated) override;
 
+	Vector<Tower*>& getVecOfAttackedBy()
+	{
+		return  this->_vectAttackedBy;
+	}
+
+	void getAttacked(Tower* attacker);
+	void getLostSight(Tower* attacker);
+	void getDamaged(int damage);
 
 private:
 	bool initwithGame(Layer* gameLayer);
+
+	Vector<Tower*> _vectAttackedBy;
 };
 #endif

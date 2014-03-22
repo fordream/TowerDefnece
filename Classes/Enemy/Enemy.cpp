@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "../Scene/MainGame.h"
 #include "../WayPoint/WayPoint.h"
+#include "../Tower/Tower.h "
 Enemy::Enemy()
 {
 	_active = false;
@@ -35,7 +36,7 @@ bool Enemy::initwithGame(Layer* gameLayer)
 	_gameLayer = gameLayer;
 	_maxHp = 40;
 	_currentHp = _maxHp;
-	_walkingspeed = 3.0f;
+	_walkingspeed = 5.0f;
 
 	_ptrSprite = Sprite::create("images/enemy.png");
 	this->addChild(_ptrSprite);
@@ -100,12 +101,16 @@ void Enemy::doActive(float dt)
 
 void Enemy::getRemoved()
 {
+	for (Tower* attacker : _vectAttackedBy)
+	{
+		attacker->targetKilled();
+	}
+
 	this->removeFromParentAndCleanup(true);
 
 	MainGame* layer = static_cast<MainGame*>(_gameLayer);
+	layer->awardGold(100);
 	layer->getEnemies().eraseObject(this, true);
-	unsigned int rcount = this->getReferenceCount();
-	unsigned int count = layer->getEnemies().size();
 	layer->enemyGotKilled();
 }
 
@@ -124,5 +129,24 @@ void Enemy::draw(Renderer *renderer, const kmMat4& transform, bool transformUpda
 		ccp(myPosition.x + HEALTH_BAR_ORIGIN + (float)(_currentHp * HEALTH_BAR_WIDTH) / _maxHp,
 		myPosition.y + 14),
 		ccc4f(0, 1.0, 0, 1.0));
+}
+
+void Enemy::getAttacked(Tower* attacker)
+{
+	_vectAttackedBy.pushBack(attacker);
+}
+
+void Enemy::getLostSight(Tower* attacker)
+{
+	_vectAttackedBy.eraseObject(attacker);
+}
+
+void Enemy::getDamaged(int damage)
+{
+	_currentHp -= damage;
+	if (_currentHp <= 0)
+	{
+		getRemoved();
+	}
 }
 

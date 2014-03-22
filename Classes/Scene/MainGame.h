@@ -7,6 +7,8 @@ USING_NS_CC;
 
 #include "../Enemy/Enemy.h"
 
+
+
 class Tower;
 
 class MainGame : public Layer{
@@ -39,6 +41,10 @@ public:
 	void enemyGotKilled();
 	void getHpDamage();
 
+	void doGameOver();
+
+	void awardGold(int gold);
+
 	CC_SYNTHESIZE(unsigned int, _wave, Wave);
 
 	Vector<Ref*>& getWayPoints(){ return _wayPoints; }
@@ -50,6 +56,15 @@ private:
 	Vector<Ref*> _wayPoints;
 	Vector<Enemy*> _vectEnemies;
 	LabelBMFont* ui_wave_lbl;
+
+	int _nPlayerHp;
+	LabelBMFont *ui_hp_lbl = nullptr;
+	bool _bIsGameEnded = false;
+
+	int _nPlayerGold = 1000;
+	LabelBMFont* ui_gold_lbl;
+
+	const int KTOWER_COST = 220;
 };
 
 #endif

@@ -20,6 +20,7 @@ public:
 
 	CC_SYNTHESIZE(Layer*, _gameLayer, GameLayer);
 	CC_SYNTHESIZE(Sprite*, m_ptrSprite, Sprite);
+	CC_SYNTHESIZE(Point, _spritePosition, SpritePosition);
 
 	bool nodewithTheGame(Layer* ptrGame, Point location);
 
@@ -27,11 +28,21 @@ public:
 
 	virtual void draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated) override;
 	
+	void targetKilled();
+	
+	void attackEnemy();
+	void shootWeapon(float dt);
+
+	void chosenEnemyForAttack(Enemy* enemy);
+	void damageEnemy();
+	void lostSightOfEnemy();
+
+	void removeBullet(Node* object);
 
 private:
 	 bool initwithTheGame(Layer* ptrGame, Point location);
 	 bool _bIsAttck;
-	 Enemy* _chosenEnemy;
+	 Enemy* _chosenEnemy = nullptr;
 
 };
 #endif

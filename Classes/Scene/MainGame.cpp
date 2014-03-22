@@ -51,7 +51,21 @@ bool MainGame::init()
 
 	loadWave();
 
+	_nPlayerHp = 5;
 
+	ui_hp_lbl = LabelBMFont::create();
+	String* str1 = String::createWithFormat("Hp: %d", _nPlayerHp);
+	ui_hp_lbl->setString(str1->getCString());
+	ui_hp_lbl->setFntFile("images/font_red_14.fnt");
+	this->addChild(ui_hp_lbl);
+	ui_hp_lbl->setPosition(Point(70, visibleSize.height - 12));
+
+	ui_gold_lbl = LabelBMFont::create();
+	String* str2 = String::createWithFormat("Gold: %d", _nPlayerHp);
+	ui_gold_lbl->setString(str1->getCString());
+	ui_gold_lbl->setFntFile("images/font_red_14.fnt");
+	this->addChild(ui_gold_lbl);
+	ui_gold_lbl->setPosition(Point(135, visibleSize.height - 12));
 
 	return true;
 }
@@ -96,6 +110,9 @@ void MainGame::onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_
 					{
 						Tower* tower = Tower::create(this, sprite->getPosition());
 						sprite->setUserData(tower);
+						_nPlayerGold -= KTOWER_COST;
+						String* str = String::createWithFormat("Gold: %d", _nPlayerGold);
+						ui_gold_lbl->setString(str->getCString());
 					}
 
 				}
@@ -121,7 +138,11 @@ void MainGame::onExit()
 
 bool MainGame::canBuyTower()
 {
-	return true;
+	if (_nPlayerGold - KTOWER_COST >= 0)
+	{
+		return true;
+	}
+	return false;
 }
 
 void MainGame::addWayPoint()
@@ -181,8 +202,14 @@ void MainGame::enemyGotKilled()
 
 void MainGame::getHpDamage()
 {
-
-}
+	--_nPlayerHp;
+	String* str = String::createWithFormat("Hp: %d", _nPlayerHp);
+	ui_hp_lbl->setString(str->getCString());
+	if (_nPlayerHp <= 0)
+	{
+		doGameOver();
+	}
+};
 
 bool MainGame::loadWave()
 {
@@ -209,5 +236,21 @@ bool MainGame::loadWave()
 	++_wave;
 	ui_wave_lbl->setString(String::createWithFormat("Wave %d", _wave)->getCString());
 	return true;
+}
+
+void MainGame::doGameOver()
+{
+	if (!_bIsGameEnded)
+	{
+		_bIsGameEnded = true;
+		Director::getInstance()->replaceScene(MainGame::createScene());
+	}
+}
+
+void MainGame::awardGold(int gold)
+{
+	_nPlayerGold += gold;
+	String* str = String::createWithFormat("Gold: %d", _nPlayerGold);
+	ui_gold_lbl->setString(str->getCString());
 }
 
